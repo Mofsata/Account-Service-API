@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Account;
 import com.example.demo.service.AccountServices;
-import com.example.demo.service.exception.ResourceNotFoundException;
 
 import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/account")
+@RequestMapping("/api/v1/accounts")
 public class AccountController {
 	private final AccountServices studentService;
 
@@ -82,7 +80,7 @@ public class AccountController {
 	public Account patchAccount(@RequestBody Account account, @PathVariable int id) {
 		return studentService.editStudent(account, id);
 	}
-	
+
 //	@ExceptionHandler({ResourceNotFoundException.class })
 //	public ResponseEntity<String> handleResourceNotFound(ResourceNotFoundException ex) {
 //		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
